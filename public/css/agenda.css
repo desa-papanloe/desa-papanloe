@@ -1,0 +1,159 @@
+/* resources/css/agenda.css */
+
+/* Scroll animations */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.scroll-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-up {
+    animation-delay: 0.1s;
+}
+
+.fade-up:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.fade-up:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Lazy loading styles */
+.lazy {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lazy-bg {
+    background-color: #f3f4f6;
+    transition: all 0.3s;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+
+/* Custom hover effects */
+.group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+}
+
+.group:hover .group-hover\:text-purple-600 {
+    color: rgb(147 51 234);
+}
+
+.group:hover .group-hover\:text-purple-700 {
+    color: rgb(126 34 206);
+}
+
+.group:hover .group-hover\:text-purple-900 {
+    color: rgb(88 28 135);
+}
+
+/* Agenda specific styles */
+.agenda-card {
+    transition: all 0.3s ease;
+}
+
+.agenda-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Search results dropdown */
+#searchResults {
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom scrollbar for search results */
+#searchResults::-webkit-scrollbar {
+    width: 6px;
+}
+
+#searchResults::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#searchResults::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+#searchResults::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* View toggle buttons */
+.view-toggle {
+    border: 1px solid #e5e7eb;
+    background: white;
+}
+
+.view-toggle.active {
+    background: rgb(147 51 234 / 0.1);
+    color: rgb(147 51 234);
+    border-color: rgb(147 51 234 / 0.2);
+}
+
+/* Loading states */
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Notification styles */
+.notification {
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .scroll-animate {
+        transform: translateY(20px);
+    }
+    
+    .agenda-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Default image fallback */
+.agenda-image-fallback {
+    background: linear-gradient(135deg, rgb(147 51 234) 0%, rgb(219 39 119) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Print styles */
+@media print {
+    .scroll-animate {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .agenda-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

@@ -1,0 +1,452 @@
+/* public/css/admin.css */
+
+/* Admin Body */
+.admin-body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    transition: background 0.5s ease;
+    min-height: 100vh;
+}
+
+.admin-body.dark {
+    background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(30, 41, 59) 50%, rgb(51, 65, 85) 100%);
+}
+
+/* Sidebar Styles */
+.admin-sidebar {
+    @apply fixed left-0 top-0 z-50 h-screen w-64 bg-white dark:bg-slate-800 border-r border-gray-200 dark:border-slate-700 transform transition-transform duration-300 ease-in-out shadow-xl;
+    transform: translateX(-100%);
+}
+
+.admin-sidebar.show {
+    transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+    .admin-sidebar {
+        transform: translateX(0);
+        position: fixed;
+    }
+}
+
+.sidebar-header {
+    @apply p-6 border-b border-gray-200 dark:border-slate-700 flex items-center justify-between;
+}
+
+.sidebar-title h2 {
+    @apply text-lg font-bold text-gray-900 dark:text-white;
+}
+
+.sidebar-title p {
+    @apply text-xs text-gray-500 dark:text-gray-400 mt-1;
+}
+
+.sidebar-toggle {
+    @apply p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-200;
+}
+
+/* Navigation Styles */
+.sidebar-nav {
+    @apply p-4 space-y-2 h-full overflow-y-auto flex flex-col;
+}
+
+.nav-item {
+    @apply flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700 transition-all duration-200 font-medium relative;
+}
+
+.nav-item.active {
+    @apply bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 shadow-sm;
+}
+
+.nav-item.active::before {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-r-full;
+}
+
+.nav-icon {
+    @apply flex-shrink-0;
+}
+
+.nav-text {
+    @apply flex-1;
+}
+
+.nav-badge {
+    @apply bg-gray-100 dark:bg-slate-600 text-gray-600 dark:text-gray-300 text-xs px-2 py-1 rounded-full font-semibold min-w-0;
+}
+
+.nav-item.active .nav-badge {
+    @apply bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400;
+}
+
+.nav-separator {
+    @apply border-t border-gray-200 dark:border-slate-700 my-4;
+}
+
+/* Dropdown Styles */
+.nav-dropdown .dropdown-toggle {
+    @apply w-full;
+}
+
+.dropdown-arrow {
+    @apply transition-transform duration-200;
+}
+
+.nav-dropdown.open .dropdown-arrow {
+    @apply transform rotate-180;
+}
+
+.dropdown-content {
+    @apply ml-8 mt-2 space-y-1 max-h-0 overflow-hidden transition-all duration-300;
+}
+
+.nav-dropdown.open .dropdown-content {
+    @apply max-h-96;
+}
+
+.dropdown-item {
+    @apply flex items-center justify-between px-4 py-2 text-sm text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors duration-200;
+}
+
+.dropdown-item.active {
+    @apply bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+}
+
+/* Main Content */
+.main-content {
+    @apply transition-all duration-300 ease-in-out;
+    margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+    .main-content {
+        margin-left: 16rem; /* 256px */
+    }
+}
+
+/* Top Header */
+.top-header {
+    @apply bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 px-6 py-4 flex items-center justify-between sticky top-0 z-40 backdrop-blur-sm bg-white/80 dark:bg-slate-800/80;
+}
+
+.header-left {
+    @apply flex items-center space-x-4;
+}
+
+.header-right {
+    @apply flex items-center space-x-4;
+}
+
+.header-action {
+    @apply p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-all duration-200;
+}
+
+.notification-badge {
+    @apply absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold;
+}
+
+.profile-dropdown {
+    @apply relative;
+}
+
+.profile-trigger {
+    @apply flex items-center space-x-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors duration-200;
+}
+
+/* Page Content */
+.page-content {
+    @apply p-6 min-h-screen;
+}
+
+/* Alert Styles */
+.alert {
+    @apply flex items-center space-x-3 p-4 rounded-xl mb-6 font-medium;
+}
+
+.alert-success {
+    @apply bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800;
+}
+
+.alert-error {
+    @apply bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800;
+}
+
+/* Dashboard Specific Styles */
+.admin-header {
+    @apply bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200/50 dark:border-slate-700/50 p-6 mb-8;
+}
+
+.admin-btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+}
+
+.admin-btn-secondary {
+    @apply bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 font-semibold rounded-xl transition-all duration-300 shadow-sm hover:shadow-md;
+}
+
+/* Statistics Cards */
+.stats-section {
+    @apply mb-8;
+}
+
+.stat-card {
+    @apply rounded-2xl p-6 shadow-lg border border-white/20 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+.stat-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+}
+
+/* Management Cards */
+.management-grid {
+    @apply mb-8;
+}
+
+.management-card {
+    @apply bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-gray-200/50 dark:border-slate-700/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+}
+
+.card-header {
+    @apply mb-6;
+}
+
+.management-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center shadow-lg;
+}
+
+.status-badge {
+    @apply px-3 py-1 rounded-full text-sm font-semibold;
+}
+
+.card-content {
+    @apply flex-1;
+}
+
+.quick-actions {
+    @apply mb-6;
+}
+
+.quick-action-btn {
+    @apply px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 inline-flex items-center;
+}
+
+.card-footer {
+    @apply border-t border-gray-100 dark:border-slate-700 pt-4 mt-6;
+}
+
+.management-link {
+    @apply inline-flex items-center justify-between w-full text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors duration-300;
+}
+
+/* Bottom Section */
+.bottom-section {
+    @apply grid grid-cols-1 xl:grid-cols-3 gap-8;
+}
+
+.activity-card,
+.quick-actions-card {
+    @apply bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-gray-200/50 dark:border-slate-700/50;
+}
+
+.card-header-simple {
+    @apply mb-6;
+}
+
+/* Activity List */
+.activity-list {
+    @apply space-y-4;
+}
+
+.activity-item {
+    @apply flex items-start space-x-4 p-4 bg-gray-50 dark:bg-slate-700/50 rounded-xl;
+}
+
+.activity-icon {
+    @apply w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0;
+}
+
+.activity-content {
+    @apply flex-1 min-w-0;
+}
+
+.activity-text {
+    @apply text-gray-900 dark:text-white font-medium mb-1;
+}
+
+.activity-time {
+    @apply text-xs text-gray-500 dark:text-gray-400;
+}
+
+/* Quick Actions Grid */
+.quick-actions-grid {
+    @apply grid grid-cols-2 gap-4;
+}
+
+.quick-action-card {
+    @apply p-4 rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer;
+}
+
+.quick-action-icon {
+    @apply w-8 h-8 rounded-lg mx-auto mb-3 flex items-center justify-center;
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+    @apply fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden;
+}
+
+.sidebar-overlay.show {
+    @apply opacity-100 pointer-events-auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-content {
+        @apply p-4;
+    }
+    
+    .admin-header {
+        @apply p-4;
+    }
+    
+    .management-card {
+        @apply p-4;
+    }
+    
+    .activity-card,
+    .quick-actions-card {
+        @apply p-4;
+    }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-down {
+    animation: slideDown 0.3s ease-in-out;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Hover Effects */
+.management-card:hover .management-icon {
+    @apply scale-110;
+}
+
+.stat-card:hover {
+    @apply scale-105;
+}
+
+.quick-action-card:hover .quick-action-icon {
+    @apply scale-110;
+}
+
+/* Loading States */
+.loading {
+    @apply opacity-50 pointer-events-none;
+}
+
+.loading::after {
+    content: '';
+    @apply absolute inset-0 bg-white/50 dark:bg-slate-900/50 flex items-center justify-center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12a9 9 0 11-6.219-8.56'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Dark Mode Specific Adjustments */
+.dark .stat-card {
+    @apply bg-gradient-to-br;
+}
+
+.dark .management-card {
+    @apply shadow-2xl;
+}
+
+.dark .activity-item {
+    @apply bg-slate-800/50;
+}
+
+/* Tailwind 4 Compatible Classes */
+.bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+.transform {
+    transform: var(--tw-transform);
+}
+
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Custom Scrollbar */
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-slate-700;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-slate-600 rounded-full;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-slate-500;
+}
